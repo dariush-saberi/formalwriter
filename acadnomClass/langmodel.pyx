@@ -15,7 +15,7 @@ with torch.no_grad():
     bert_model3 = BertForMaskedLM.from_pretrained('bert-base-cased')
     xlnet_tokenizer = XLNetTokenizer.from_pretrained('xlnet-base-cased')
     xlnet_model = XLNetLMHeadModel.from_pretrained('xlnet-base-cased')
-    bert_model.eval()
+    #bert_model.eval()
     #xlnet_model.eval()
 
 def bert_mask300(sent):
