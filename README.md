@@ -4,7 +4,7 @@ To deploy, first install the dependencies:
  > Spacy and English language model with spacy.load('en_core_web_sm')<br> 
  > NTLK<br> 
  > Cython<br> 
- > Transformers
+ > Transformers<br>
  > any other dependencies based on your environment
  
  and then run the server with:
