@@ -5,6 +5,7 @@ To deploy, first install the dependencies:
  > NTLK<br> 
  > Cython<br> 
  > Transformers
+ > any other dependencies based on your environment
  
  and then run the server with:
 
