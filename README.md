@@ -1,5 +1,5 @@
 # formalwriter
-To deploy, first install Spacy, NTLK and Transformers and then run the server with the command:
+To deploy, first install Spacy, NTLK, Cython and Transformers and then run the server with the command:
 
 > cd acadnomClass<br> 
 > python3 setup.py build_ext --inplace<br> 
