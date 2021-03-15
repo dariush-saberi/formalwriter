@@ -6,9 +6,9 @@ To deploy, first install the dependencies:
  > NTLK<br> 
  > Cython<br> 
  > Transformers<br>
- > any other dependencies based on your environment
  
- and then run the server with:
+any other dependencies reqired in your environment<br>
+and then run the server with:
 
 > cd acadnomClass<br> 
 > python3 setup.py build_ext --inplace<br> 
