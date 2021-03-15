@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>FormalWriter Online English Nominalizer</title>
+<link rel="shortcut icon" href="/static/favicon.ico">
+
+<!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+<script data-ad-client="ca-pub-7391803830463557" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+<link rel="shortcut icon" href="/static/favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="/static/scripts/nominalizer.js"></script>
+<link rel="stylesheet" href="/static/scripts/nominalizer.css">
+
+  <style>
+    @media all and (max-width: 35em) {
+    .my-breakpoint .ui-block-a,
+    .my-breakpoint .ui-block-b,
+    .my-breakpoint .ui-block-c,
+    .my-breakpoint .ui-block-d,
+    .my-breakpoint .ui-block-e {
+      width: 100%;
+      float:none;
+    }
+  }
+ 
+  @media all and (min-width: 45em) {
+    .my-breakpoint.ui-grid-b .ui-block-a { width: 40%; }
+    .my-breakpoint.ui-grid-b .ui-block-b  { width: 40%; }
+    .my-breakpoint.ui-grid-b .ui-block-c { width: 20%; }
+  }
+  </style>
+</head>
+<body>
+  <div role="main" class="ui-content" style="background-color:#fff;height:100%;">
+    <div class="ui-grid-b my-breakpoint">
+      <div class="ui-block-a" style="border-radius: 25px;"><div class="ui-body ui-body-d">
+      <div data-role="container" style="top:0px;margin-left:10px;"><p><a href="http://formalwriter.com/?u={{username}}" rel="external"><img src="../static/images/nomlogo.png"></a></p></div>
+      
+      <ul class="nav nav-tabs" style="margin-top:30px;">
+    <li><a href="/?u={{username}}" rel="external">Informal Word Substitution</a></li>
+    <li class="active"><a href="#">Nominalization</a></li>
+    <li id="acw-bar"><a href="/vocabulary?u={{username}}" rel="external">Paraphrase</a></li>
+    <li id="gen-bar"><a href="/generate?u={{username}}" rel="external">Auto Text</a></li>
+	</ul>
+		<div role="main" class="ui-content" style="margin-top:80px;">
+		<center>
+			<p id="headTitle" style="font-family: 'Muli:wght@900&display=swap', sans-serif;font-size:30px;width:90%;color:#2e2d2b">Write here</p>
+            <div style="width:10%;float:right;">
+            <a id="academize" href="#" class="ui-btn ui-icon-arrow-r ui-btn-icon-notext ui-corner-all" onclick="nom(document.myform.sent.value); return false;"></a>
+            <br>
+            <a id="clearBox" href="#" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" style="display:none"></a>
+            </div>
+            
+            <form name="myform" id="myform" method="POST" data-ajax="false" accept-charset="UTF-8" style="width:80%">
+            
+            <textarea class="myarea" id="sent" name="sent" data-role="none" style="width:95%;border: none;box-shadow: none;font-size:18px"  placeholder="Type or paste (Ctrl+v) your sentence here" required></textarea>  
+            </form>
+        </center>
+        </div>
+      
+      </div></div> <!-- A -->
+      <div class="ui-block-b" style="border-radius: 25px;background-color:#F1F1F0"><div class="ui-body ui-body-d">
+      <div role="main" class="ui-content">
+			<div id="loading" style="margin-top:180px;display:none;"><center><img src="static/images/gears.svg" ></center></div>
+			
+			<div id="announce" style="width:90%;color:#2e2d2b;margin-top:110px;">
+				<p><b><h3>Nominalization</h3></b></p>
+				<p><br><br><b>What is Nominalization?</b><br>Nominalization is a common feature of technical writing. By making your sentence more simple, nominalization makes your text more academic. In other words, it means convertion of verb and adjective to noun. See these examples:<br><br>
+				<i>select</i> >  <i>selection</i><br><i>educated</i> > <i>education</i>
+				<br><br>
+				<p><li>Not all the sentences in your text can be nominalized. It is for sentences with causative, concession or temproal relations.</li>
+				<li>Avoid too many nominalization inside your text!</li>
+				</p><br><p><a href="#" onclick="runExample2();" style="text-decoration: none;">Click to try our example!</a></p>
+				</div>
+				<div class="ui-content" style="width:80%;margin:auto;"><button id="cleanOutput" style="display:none">Select Words & Clean Text</button></div>
+				<div id="smallNote" class="ui-content" style="width:80%;margin:auto;display:none;font-family: 'Muli:wght@900&display=swap', sans-serif;font-size:11px;">** Green words are <b>formal</b> or <b>academic</b> words.</div>
+			</div>
+        
+			<div id="resultCover" class="ui-content" style="display:none;margin-top:150px;height:500px;">
+			<div id="originalHead" style="display:None"><b>Your Sentence:</b></div>
+			<div id="original" class="ui-content" style="width:80%;margin:auto;"></div>
+			<div id="resultHead" style="display:none"><b>Result:</b></div>
+			<div id="resultError" class="ui-content" style="width:80%;margin:auto;"></div>
+		
+				<div id="110" class="error">
+						<div class="alert alert-danger"><b>Possible Grammatical Error: Verb</b></div>
+						<div>It seems there is a grammatical error in your sentence. We suggest you review the sentence. The problem may be with the verb. Please change the sentence and try again.</div>
+				</div>
+
+				<div id="106" class="error">
+						<div class="alert alert-danger"><b>Not a Causative or Concessive Sentence</b></div>
+						<div>The system works with causative and concessive English sentences. Please revise your sentence and try again.</div>
+				</div>
+
+				<div id="101" class="error">
+						<div class="alert alert-danger"><b>Possible Grammatical Error: Subject</b></div>
+						<div>It seems there is a grammatical error in your sentence. We suggest you review the sentence. The problem may be with the subject. Please change the sentence and try again.</div>
+				</div>
+
+
+				<div id="103" class="error">
+						<div class="alert alert-danger"><b>System didn't Understand Your Sentence</b></div>
+						<div>The system works with causative and concessive English sentences. Please revise your sentence and try again.</div>
+				</div>
+
+				<div id="104" class="error">
+						<div class="alert alert-danger"><b>Try a Longer Academic Sentence</b></div>
+						<div>The system works with causative and concessive English sentences. Please revise your sentence and try again.</div>
+				</div>
+
+			<div id="result1" class="ui-content" style=""></div>
+			<div id="result2" class="ui-content" style=""></div>
+			<div id="result3" class="ui-content" style=""></div>
+			<div id="result4" class="ui-content" style=""></div>
+			<div id="result4" class="ui-content" style=""></div>
+			
+			
+	</div>
+	
+	
+	<div data-role="popup" id="nompop" class="ui-content" data-theme="a" style="padding:15px;font-family: 'Muli', sans-serif;font-size:14px;max-width:350px;">
+<p><b>What is Nominalization?</b></p>
+<p>Nominalization means convertion of verb and adjective to noun:</span><br><br><b>select</b> ->  <b>selection</b><br><br><b>educated</b> -> <b>education</b></p><br><p><b>Example:</b></p>
+<p> <span class='focus4'>She</span> was <span class='focus2'>selected</span> because <span class='focus4'>she</span> is <span class='focus3'>educated</span></p> <p>1. <span class='focus4'>Her</span> <span class='focus2'>selection</span> was because of <span class='focus4'>her</span> <span class='focus3'>education</span></p><p>2. <span class='focus4'>Her</span> <span class='focus3'>education</span> caused <span class='focus4'>her</span> <span class='focus2'>selection</span></p><br><p><b>Nominalization makes your text more Academic!</b></p><br>
+<p><a href="#" onclick="runExample2();">Try Example live!</a></p>
+</div>
+      
+      
+      </div></div><!-- B -->
+      <div class="ui-block-c" style="border-radius: 25px;background-image:url('/static/images/water1.png');"><div class="ui-body ui-body-d">
+      <div role="main" class="ui-content" style="width:80%;margin-left:20%">
+      <div data-role="container"><center><img src="../static/images/tryitfree.png" style="margin-top:20px"></center></a></div>
+		<div data-role="container" style="width:90%;margin:0 auto;"> 
+			<div id="stats" style="width:98%;margin:0 auto;font-size:14px;margin-top:80px;display:none">
+					<p>
+					<span><b>Text Summary</b></span><br><br>
+					<span>Text Length:</span> <span id="st2" ></span><br>
+					<span>Academic Words:</span> <span id="st6" ></span><br>
+					<span>Informal Words:</span> <span id="st7" ></span><br>
+					<span>Contractions:</span> <span id="st4" ></span><br>
+					<br>
+					<span>Formal/Academic Percentage:</span> <span id="st8" ></span>%<br>
+					<span>Informal Percentage:</span> <span id="st9" ></span>%<br>
+					<br>
+					<span>Total Changes:</span> <span id="st1" ></span>%<br>
+					</p>
+
+			</div>
+			<div>
+			<p class="inst" style="font-family: 'Muli', sans-serif;width:100%;color:#2e2d2b;margin-top:40px"><br><br><br>For <a href="#nompop" data-rel="popup" data-transition="pop" style="text-decoration: underline;text-decoration-style:dashed;font-family: 'Muli', sans-serif;width:100%;font-weight:300">nominalization</a>, type/paste one English sentence. (Maximum: 1 sentence)<br></p> 
+			<div style="font-family: 'Muli', sans-serif;width:100%;color:#2e2d2b;margin-top:150px">If you found this application useful and you need to process a long text, or in case of questions, please send me an email <a href="mailto:tarjomeh@gmail.com" style="text-decoration: none;">tarjomeh@gmail.com</a> </div>
+		</div>
+			</div>
+      </div>
+      </div></div><!-- C -->
+    </div>
+   <div data-role="footer" data-position="fixed" style="margin:0 auto;padding:15px;background:#FFFFFF;font-size:13px;font-weight:500;color:#97a0bf;text-align:center;">
+		<p style="width:80%;margin:0 auto">(c) FormalWriter (<a style="text-decoration:none;color:#97a0bf;font-size:13px;font-weight:500;" href="https://saberi.ir" target="_blank">Dariush Saberi</a>).<br>The application is developed with a grant from City University of Hong Kong.<br>Privacy: Your text is safe with us. We do not publish or transfer your text to any third party <br>for any reason, unless compelled to do so by a court of law.</p>
+	</div>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVVTF8M0WS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GVVTF8M0WS');
+</script>
+	
+</body>
+</html>

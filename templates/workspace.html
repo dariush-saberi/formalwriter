@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>FormalWriter: Your Academic Writing Workspace</title>
+<link rel="shortcut icon" href="/static/favicon.ico">
+
+<!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+<script data-ad-client="ca-pub-7391803830463557" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link href="https://fonts.googleapis.com/css?family=Rammetto+One|Roboto|Muli|Lato" rel="stylesheet"> 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="/static/scripts/nominalizerNew.js"></script>
+<link rel="stylesheet" href="/static/scripts/nominalizer.css">
+ <style>
+    @media all and (max-width: 35em) {
+    .my-breakpoint .ws-a,
+    .my-breakpoint .ws-b,
+    .my-breakpoint .ws-c,
+    .my-breakpoint .ws-d{
+      width: 100%;
+      float:none;
+    }
+  }
+ 
+  @media all and (min-width: 45em) {
+    .my-breakpoint .ws-a { width: 15%; }
+    .my-breakpoint .ws-b { width: 35%; }
+    .my-breakpoint .ws-c { width: 35%; }
+    .my-breakpoint .ws-d { width: 15%; }
+  }
+
+      img{
+
+        max-width: 100%;
+
+        max-height: 100%;
+
+        display: block; /* remove extra space below image */
+
+    }
+#wstext:empty:before {
+  content:attr(data-placeholder);
+  color:gray
+}
+#wshead:empty:before {
+  content:attr(data-placeholder);
+  color:gray
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+.dropdown-menu {
+    columns: 2;
+	padding:10px;
+	font-size:18px;
+	
+}
+a, ul, li {
+	cursor:pointer;
+}
+#anomhead{
+	font-size: 16px;
+	padding: 10px;
+}
+#clearWS:hover {color:red;cursor:pointer;}
+#submitIcon:hover {color:blue;cursor:pointer;}
+#close,#open,#rightBarClose,#rightBarOpen{cursor:pointer;}
+
+  </style>
+
+</head>
+<body style="background:#fff">
+
+ <div data-role="page" style="background:#fff">
+<div id="firstRow" class="row" style="margin-top:10px;padding:15px;">
+ 
+  <div id="ws-a" class="col-sm-2">
+  <center><a href="http://formalwriter.com/?u={{username}}" rel="external"><img src="../static/images/nomlogo-sm.png"></a></center>
+  </div> <!---A -->
+  
+   <div id="ws-b" class="col-sm-4">
+	
+   </div><!-- B -->
+	   
+  <div id="ws-c" class="col-sm-4">
+	  
+	<div id="alertsbox">
+		  <div id="successful" class="alert alert-info" style="display:none;"><b>Continue to write</b> or <b>edit</b> the text and copy it to clipboard</div>  
+		  <div id="welldone" class="alert alert-success" style="display:none;"><b>Well done! Your text is formal</b></div>
+	</div>
+
+</div> <!-- C -->
+
+  <div id="ws-d" class="col-sm-2">
+  <center><img src="../static/images/tryitfree.png"></center>
+ </div> <!-- D -->
+
+</div> <!-- Header ROW -->  
+
+<!-- ToolBox -->  
+<div id="secondRow" class="row" style="padding:10px;">
+  <div id="ws-a" class="col-sm-2">
+	  <div style="width:90%;font-size:20px;color:#ccc;"><a href="http://formalwriter.com"><img id="logoabv" title="FormalWriter.com" src="/static/images/logo-abv.png" style="display:none;margin-top:-5px;"></a> <i id="close" class="wsicons fas fa-times" style="float:right;margin-top:5px;"></i> <i id="open" class="wsicons fas fa-bars" style="display:none;font-size:24px;"></i> </div>
+  </div> <!---A -->
+  
+   <div id="ws-b" class="col-sm-4">
+	    <div id="subtools" style="font-size:25px;font-weight:300;text-align:right;color:#ccc;"><i id="clearWS" title="Clear" class="wsicons fas fa-eraser"></i>   <i id="submitIcon" title="Submit" class="wsicons far fa-arrow-alt-circle-right"></i>  </div>
+  </div><!-- B -->
+  <div id="ws-c" class="col-sm-4" style="text-align:right">
+	   <i  class="wsloading wsicons fas fa-spinner fa-pulse" style="font-size:25px;color:purple;float:left;margin-left:0px;display:none"></i>   <span class="wsloading" style="font-size:14px;font-weight:900;color:purple;float:left;margin-left:10px;display:none">Please wait.. it takes time</span>
+	   <span id='copied' style="font-size:10px;color:red;display:none">Text is copied to clipboard</span>
+	  <div id="tools" style="width:120px;display:none;float:right" >
+	  <button id="mycopy" type="button" class="btn btn-default btn-sm">
+        <span class="far fa-copy" style="font-size:15px;"></span> Clean Text 
+      </button>
+	  </div>
+</div> <!-- C -->
+
+  <div id="ws-d" class="col-sm-2" style="font-size:22px;color:#ccc">
+	  <i id="rightBarClose" class="fas fa-angle-right" style="float:left;margin-top:5px"></i> <i id="rightBarOpen" class="fas fa-angle-left" style="float:right;display:none;margin-right:20px;margin-top:5px"></i>
+  </div><!-- D -->
+
+</div> <!-- Tool Box -->  
+
+
+<!-- MAIN PAGE -->
+
+<div id="pageRow" class="row">
+	
+  <div id="ws-a" class="col-sm-2" style="height:700px;">
+	<!-- <div class="container" style="width:95%;margin-left:10px;margin-top:30px">
+		<span id="wsbar-hide" class="glyphicon glyphicon-eye-close"></span> <span>Close</span>
+	</div> -->
+	  
+	  <div id="sidebar" style="width:95%;margin-left:10px;margin-top:10px;border-right:1px solid #ccc;height:700px;">
+
+		<form id="wsform">
+	  <div class="container" data-role="none" style="width:95%;margin-left:10px;margin-top:30px;font-size:12px;">
+		<h4><b>Set Your Goal</b></h4>
+		<hr>
+		<div class="radio">
+		  <label><input type="radio" data-role="none" name="wsoptions" value="inform" checked selected>Informal Words</label>
+		</div>
+		<div class="radio">
+		  <label><input type="radio" data-role="none" name="wsoptions" value="nom">Nominalizer</label>
+		</div> 
+		<!--
+		<div class="radio">
+		  <label><input type="radio" data-role="none" name="wsoptions" value="nominal">Nominal Maker</label>
+		</div>
+		<div class="radio">
+		  <label><input type="radio" data-role="none" name="wsoptions" value="phrase">Word Replace</label>
+		</div> -->
+		<div class="radio">
+		  <label><input type="radio" data-role="none" name="wsoptions" value="para">Paraphraser</label>
+		</div> 
+		<!-- <div class="radio">
+		  <label><input type="radio" data-role="none" name="wsoptions" value="all">All Options</label>
+		</div>	-->	
+	  </div>
+	<div class="container" style="width:98%;margin-left:10px;margin-top:40px;font-size:10px">
+		<h4><b>Level of Edit</b> <span data-role="none" class="font-weight-bold text-primary ml-2 valueSpan2" style="margin-left:30%;"></span> </h4> 
+		<hr>
+		<div style="width:25%;display:inline;float:left;color:#5ea832"><b>Light</b></div><div style="width:30%;display:inline;color:blue;text-align:center"><b>Medium</b></div>
+		<div style="width:40%;display:inline;float:right;text-align:right;color:#a84a32"><b>Substantive</b></div>	
+		
+		<div class="d-flex justify-content-center my-4" data-role="none">
+		  <div class="w-75">
+			<input id="myrange" type="range" data-role="none" class="custom-range" min="5" max="500" step="5" value="250">
+		  </div>
+		  </div>
+		<div style="width:45%;display:inline;float:left"><i>Serious Words</i></div><div style="width:45%;display:inline;float:right;text-align:right"><i>Edit Everything</i></div>	 
+	</div>
+   <div class="container" style="width:98%;margin-left:10px;margin-top:40px;font-size:11px">
+	<h4><b>Stop List</b></h4>
+	<hr>
+	<p style="font-size:13px">Separate your words with comma<br>e.g. <i>sports,cricket,football</i></p>
+	<p><input id="wordlist"></input></p>
+	<p>System will ignore these words</p>
+	</div>
+<hr>			 
+ </div>
+
+  </div> <!---A -->
+  <div id="ws-b" class="col-sm-4">
+  <div id="wshead" contentEditable=true data-placeholder="You can add a title here" style="font-size:22px;font-weight:700"></div>
+   <br>
+  <div id="wstext" contentEditable=true data-placeholder="Type or paste (Ctrl+v) your text here" style="font-size:20px;font-weight:300;min-height:700px;"></div>
+  <input id="sent" name="sent" type="hidden">
+  </div> <!-- B -->
+  
+  <div id="ws-c" class="col-sm-4">
+	  		<div id="mytitle" style="margin-left:20px;font-size:22px;font-weight:700"></div>
+	  <div class="container" style="width:95%;margin-left:10px;margin-top:10px;font-size:11px"> 
+		<div id="result" style="margin-top:10px;font-size:20px;font-weight:300;">
+				<div style="height:350px;width:350px;background-image:url('/static/images/pngfuel.com.png');margin:0 auto;"></div>
+				<p><center><span style="font-size:16px;font-weight:900;color:gray">I am waiting for you to write</span></center></p>
+				<p><center><span style="font-size:16px;font-weight:900;color:gray">Just arrived from back door? <a href="/" rel="external">Read more here</a></span></center></p>
+		</div>
+		<div id="nominalizer" style="margin-top:10px;font-size:20px;font-weight:300;">
+				<div id="original" class="ui-content" style="width:80%;margin:auto;"></div>
+			    <div id="result1" class="ui-content" style=""></div>
+			   <div id="result2" class="ui-content" style=""></div>
+			   <div id="result3" class="ui-content" style=""></div>
+			    <div id="result4" class="ui-content" style=""></div>		
+		</div>
+		<div id="paraphrase" style="margin-top:10px;font-size:20px;font-weight:300;">
+						
+		</div>		
+	</div>
+  </div><!-- C -->
+
+  <div id="lastwsd" class="col-sm-2" style="height:700px;">
+	<div id="rightBar" data-role="container" style="width:90%;margin:0 auto;"> 
+				<input id="myuser" value="{{username}}" type="hidden">
+				<input id="sent2" type="hidden">
+				<input id="cleaned" type="hidden">
+				<input id="proc" type="hidden">
+				<div id="proced" style="display:none"></div>
+				<div id="stats" style="width:98%;margin:0 auto;font-size:14px;margin-top:10px;display:none">			
+					<span style="font-size:14px;"><b>Text Colors</b></span><br>
+					<hr style="color:orange">
+					<span style="color:green">Green</span> words are <b>academic</b><br><span style="color:red">Red</span> words are <b>informal</b><br>
+					<span style="color:blue">Blue</span> words are your selections. 
+					<br>
+					<br>
+					<span><b>Text Summary</b></span><br>
+					<hr style="color:green">
+					<span>Text Length:</span> <span class="st2" ></span><br>
+					<span>Academic Words:</span> <span id="st6" ></span><br>
+					<span>Informal Words:</span> <span id="st7" ></span><br>
+					<span>Contractions:</span> <span id="st4" ></span><br>
+					<br>
+					<span>Formal/Academic Percentage:</span> <span id="st8" ></span>%<br>
+					<span>Informal Percentage:</span> <span id="st9" ></span>%<br>
+					<br>
+					<span>Total Changes:</span> <span id="st1" ></span>%<br>
+					</p>
+					<div id="play" style="display:none">Play</div>
+			</div><!--stats -->
+	</div>
+  </div><!-- D -->
+</form>
+</div> <!-- ROW -->
+</div> <!-- Page --> 
+
+</body>
+</html>

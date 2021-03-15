@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>FormalWriter: Free Online AI Paraphrase Engine</title>
+<link rel="shortcut icon" href="/static/favicon.ico">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link href="https://fonts.googleapis.com/css?family=Rammetto+One|Roboto|Muli|Lato" rel="stylesheet"> 
+<link rel="shortcut icon" href="/static/favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="/static/scripts/nominalizer.js"></script>
+<link rel="stylesheet" href="/static/scripts/nominalizer.css">
+ <style>
+    @media all and (max-width: 35em) {
+    .my-breakpoint .ui-block-a,
+    .my-breakpoint .ui-block-b,
+    .my-breakpoint .ui-block-c,
+    .my-breakpoint .ui-block-d,
+    .my-breakpoint .ui-block-e {
+      width: 100%;
+      float:none;
+    }
+  }
+ 
+  @media all and (min-width: 45em) {
+    .my-breakpoint.ui-grid-b .ui-block-a { width: 49.95%; }
+    .my-breakpoint.ui-grid-b .ui-block-b,
+    .my-breakpoint.ui-grid-b .ui-block-c { width: 24.925%; }
+  }
+      img{
+
+        max-width: 100%;
+
+        max-height: 100%;
+
+        display: block; /* remove extra space below image */
+
+    }
+  </style>
+</head>
+<body style="background:#fff">
+ <div data-role="page" style="background:#fff">
+	<div data-role="header" style="background:#fff;top:20px;margin-left:10px;border:none">
+	 <p><a href="http://formalwriter.com" rel="external"><img src="../static/images/nomlogo.png"></a></p>	
+	</div>
+	
+	<div role="main" class="ui-content">
+		<ul class="nav nav-tabs" style="margin-top:30px;">
+    <li class="active"><a href="#">Informal Word Substitution</a></li>
+    <li><a href="/nominalize" rel="external">Nominalization</a></li>
+    </ul>	
+    <br>
+	<div class="ui-corner-all custom-corners">
+		<div class="ui-body ui-body-a" style="width:100%;margin:0 auto;border:none">
+			<p id="headTitle" style="text-align:center;font-family: 'Muli:wght@900&display=swap', sans-serif;font-size:30px;width:90%;color:#2e2d2b">FormalWriter vs Grammarly </p>  
+		</div>
+	</div>
+	
+  <div class="container">
+  <div class="row">
+		<div class="col-sm-6"><p style="background-color:#f2fae1;padding:20px;width:100%;border-radius:10px;height:300px;font-size:18px;"><b>A direct comparison would show the big difference between these two applications. As you can see in the below table, not surprisingly, <u>Grammarly could not catch any informal word </u> in the text. Why? FormalWriter is developed for academic writing improvement and class use, Grammarly is a grammar checker for general purpose.</b></p>
+		</div>
+		<div class="col-sm-6"><p style="background-color:#ebf0ec;padding:15px;width:100%;border-radius:10px"><b>Original Paragraph Written by an English Native Speaker</b></p></p>
+				<p style="border:1px solid #ebf0ec;padding:15px;width:100%;border-radius:10px">(Source: BAWE corpus)<br>There is also the influence of economic factors to consider.  Children are no longer economic assets, but are in fact very financially costly, and many women may decide they cannot afford to have children (Schoen et al, 1997).  Fears about economic security have lead to more women deciding that children are not a viable option, and that the financial burden is too high a price to pay.  Aspirations for certain standards of living may also influence the decision as some will feel that the cost of children would not fit in with the lifestyle they wish to have (Andorka, 1978).</p>
+		</div>
+  </div>
+  </div>
+  	 	 
+  
+ <div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+		<p style="text-align:center;font-weight:300;background-color:#F1F1F0"><b><span style="color:green;font-size:22px">FormalWriter</span><br>Check the suggestions for "decide" in 2 different sentences</b></p>
+      <p style="padding:20px;border:1px solid #000">There is also the influence of economic <span style='color:green'>factors</span> to <span style='color:green'>consider</span> . Children are no longer economic assets , but are in <span style='color:green'>fact</span> very <span style='color:red'><del>financially</del></span> <select multiple="multiple" data-role="none"><option selected>economically</option><option>physically</option><option>politically</option></select> costly , and many <span style='color:green'>women</span> may <span style='color:red'><del>decide</del></span> <select multiple="multiple" data-role="none"><option selected>say</option><option>find</option><option>conclude</option><option>determine</option><option>resolve</option></select> they can not afford to have <span style='color:green'>children</span> ( Schoen et al , 1997 ) . <span style='color:green'>Fears</span> about economic <span style='color:green'>security</span> have <span style='color:green'>lead</span> to more <span style='color:green'>women</span> <span style='color:red'><del>deciding</del></span> <select multiple="multiple" data-role="none"><option selected>selecting</option><option>finding</option><option>concluding</option><option>evaluating</option><option>examining</option></select> that <span style='color:green'>children</span> are not a viable <span style='color:red'><del>option</del></span> <select multiple="multiple" data-role="none"><option selected>solution</option><option>type</option><option>support</option><option>form</option><option>feature</option></select> , and that the financial burden is too <span style='color:green'>high</span> a <span style='color:green'>price</span> to <span style='color:green'>pay</span> . Aspirations for <span style='color:green'>certain</span> <span style='color:green'>standards</span> of <span style='color:green'>living</span> may also influence the <span style='color:green'>decision</span> as some will <span style='color:green'>feel</span> that the <span style='color:green'>cost</span> of <span style='color:green'>children</span> would not <span style='color:green'>fit</span> in with the lifestyle they <span style='color:green'>wish</span> to have ( Andorka , 1978 ) .</p>
+    </div>
+    <div class="col-sm-6">
+		<p style="text-align:center;font-weight:300;background-color:#F1F1F0"><b><span style="color:blue;font-size:22px">Grammarly</span></b><br><i><b>Goals set</b>: Formal, Technical, Respectful, Describe</i></p>
+      <p><img src="images/grammarly2.png" style="border:1px solid #000;"></p>
+    </div>
+  </div>
+</div> 
+
+
+   <div data-role="footer" style="margin:0 auto;padding:15px;background:#FFFFFF;font-size:13px;font-weight:500;color:#97a0bf;text-align:center;">
+		<p style="width:80%;margin:0 auto">(c) FormalWriter (<a style="text-decoration:none;color:#97a0bf;font-size:13px;font-weight:500;" href="https://saberi.ir" target="_blank">Dariush Saberi</a>).<br>The application is developed with a grant from City University of Hong Kong.<br>Privacy: Your text is safe with us. We do not publish or transfer your text to any third party <br>for any reason, unless compelled to do so by a court of law.</p>
+	</div>
+	</div>
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVVTF8M0WS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GVVTF8M0WS');
+</script>
+
+</body>
+</html>
