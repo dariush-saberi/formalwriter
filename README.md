@@ -15,4 +15,4 @@ Then run the server with:
 > cd ..<br> 
 > python3 app.py
 
-@Anton: I will write a complete readme file.
+@Anton: I will write a complete readme file later.
