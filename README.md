@@ -1,4 +1,4 @@
-# academizer
+# formalwriter
 To deploy, first install Spacy, NTLK and Transformers and then run the server with the command:
 
 > cd acadnomClass<br> 
