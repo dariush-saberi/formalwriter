@@ -3,6 +3,7 @@ To deploy, first install the dependencies:
 
  > Flask<br>
  > Spacy and English language model with spacy.load('en_core_web_sm')<br> 
+ > Stanza<br>
  > NTLK<br> 
  > Cython<br> 
  > Transformers<br>
