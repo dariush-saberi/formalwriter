@@ -7,8 +7,8 @@ To deploy, first install the dependencies:
  > Cython<br> 
  > Transformers<br>
  
-any other dependencies reqired in your environment<br>
-and then run the server with:
+and other dependencies reqired in your environment<br>
+Then run the server with:
 
 > cd acadnomClass<br> 
 > python3 setup.py build_ext --inplace<br> 
