@@ -1,269 +1,245 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>FormalWriter: Free Online AI Paraphrase Engine</title>
-<link rel="shortcut icon" href="/static/favicon.ico">
-
-<!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
-
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
-<script data-ad-client="ca-pub-7391803830463557" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<link href="https://fonts.googleapis.com/css?family=Rammetto+One|Roboto|Muli|Lato" rel="stylesheet"> 
-<link rel="shortcut icon" href="/static/favicon.ico">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="/static/scripts/nominalizer.js"></script>
-<link rel="stylesheet" href="/static/scripts/nominalizer.css">
- <style>
-    @media all and (max-width: 35em) {
-    .my-breakpoint .ui-block-a,
-    .my-breakpoint .ui-block-b,
-    .my-breakpoint .ui-block-c,
-    .my-breakpoint .ui-block-d,
-    .my-breakpoint .ui-block-e {
-      width: 100%;
-      float:none;
-    }
-  }
- 
-  @media all and (min-width: 45em) {
-    .my-breakpoint.ui-grid-b .ui-block-a { width: 49.95%; }
-    .my-breakpoint.ui-grid-b .ui-block-b,
-    .my-breakpoint.ui-grid-b .ui-block-c { width: 24.925%; }
-  }
-      img{
-
-        max-width: 100%;
-
-        max-height: 100%;
-
-        display: block; /* remove extra space below image */
-
-    }
-.userh {
-
-border: 1px solid #ccc;
-box-sizing: border-box;
-color: rgb(55, 55, 55);
-cursor: pointer;
-display: inline-block;
-font-family: Lato, sans-serif;
-font-size: 12px;
-font-weight: 300;
-height: 172px;
-padding-bottom: 0px;
-padding-left: 15px;
-padding-right: 15px;
-padding-top: 12px;
-text-decoration: none;
-text-decoration-color: rgb(55, 55, 55);
-text-decoration-line: none;
-text-decoration-style: solid;
-width: 180px;
-margin-right:20px;
-margin-top:10px;
-}
-
-    
-  </style>
-</head>
-<body style="background:#fff">
- <div data-role="page" style="background:#fff">
-  
-<div class="row">
-
-  <div id="block-a" class="col-sm-5" style="border-radius: 25px;">
-  
-  	<div data-role="header" style="background:#fff;top:20px;margin-left:10px;border:none">
-	 <p><a href="http://formalwriter.com/?u={{username}}" rel="external"><img src="../static/images/nomlogo.png"></a></p>	
-	</div>
-<a id="mylist" class="btn btn-default btn-xl" style="position:absolute;margin-left:50%;margin-top:-25px;display:none;z-index: 10;" data-role="none"> <span class="glyphicon glyphicon-th-list" onclick="getUser();"></span> My Texts</a>
-<a id="settings" href="#setpop" class="btn btn-default btn-xl" style="position:absolute;margin-left:70%;margin-top:-25px;display:none;z-index: 10;" data-role="none" data-rel="popup" data-transition="pop"> <span class="glyphicon glyphicon-cog"></span> Settings</a>
-	<div role="main" class="ui-content">
-		
-	<div id="mainMenu">
-		<ul class="nav nav-tabs" style="margin-top:30px;">
-    <li class="active"><a href="#">Informal Word Substitution</a></li>
-    <li id="nom-bar"><a href="/nominalize?u={{username}}" rel="external">Nominalization</a></li>
-    <li id="acw-bar"><a href="/vocabulary?u={{username}}" rel="external">Paraphrase</a></li>
-    <li id="gen-bar"><a href="/generate?u={{username}}" rel="external">Auto Text</a></li>
-    </ul>
-    </div>	
-  
-		 <form name="myform" id="myform" method="POST" data-ajax="false" accept-charset="UTF-8" >
-    <div data-role="popup" id="setpop" data-transition="slideup" style="position:relative;padding:15px;">
-		
-			<div style="width:100%;padding:10px;background:#e6f6ff;text-align:center;border-radius:10px"><b>Level of Edit</b></div>
-			<br>
-		<div style="width:40%;display:inline;float:left;color:#5ea832"><b>Light</b></div><div style="width:10%;display:inline;color:blue;text-align:center"><b>Medium</b></div><div style="width:40%;display:inline;float:right;text-align:right;color:#a84a32"><b>Substantive</b></div>	
-		<div style="width:45%;display:inline;float:left"><i>Serious Words Only</i></div><div style="width:45%;display:inline;float:right;text-align:right"><i>Edit Everything</i></div>	    
-        <br>
-        <br>
-        <div data-role="rangeslider">
-        <input type="range" name="range-6a" id="myrange" min="10" max="500" step="10" value="250">
-        </div>
-        <br><br>
-        <div style="width:100%;padding:10px;background:#e6ffe7;text-align:center;border-radius:10px"><b>Stop List</b></div>
-			<p>Separate your words with comma<br>e.g. <i>sports,cricket,football</i></p>
-			<p><input id="wordlist"></input></p>
-			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>		
-			<br>
- 			<center><button type="button" data-role="none"><a href="#" data-rel="back">Done</a></button></center>
-		</div>
-		
-				
-		<div id="form-wrapper" style="margin-top:50px;width:100%;">
-		<center>
-			<p id="headTitle" style="font-family: 'Muli:wght@900&display=swap', sans-serif;font-size:30px;width:90%;color:#2e2d2b">You <del style="color:red">can't</del> <u>cannot</u> catch informal words</p>
-			<a href="/workspace?u={{username}}" rel="external"><button id="start1" type="button" class="btn btn-primary btn-lg" data-role="none" style="font-size:20px;font-weight:600;margin-top:50px;">Start Here</button></a>
-			<p id="startNote" style="margin-top:25px;font-size:12px;">Login is not required</p>
-			<div style="width:85%;float:left;display:inline">
-				<textarea class="myarea" id="sent" name="sent" data-role="none" style="width:100%;border: none;box-shadow: none;font-size:18px;display:none"  placeholder="Type or paste (Ctrl+v) your text here" required></textarea>
-			</div>
-            <div style="width:15%;float:right;display:inline">
-			<a id="clearBox" href="#" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" style="display:none"></a>
-			<br>
-			<br>
-            <a id="academize" href="#" class="ui-btn ui-icon-arrow-r ui-btn-icon-notext ui-corner-all" style="display:none" onclick="acad(document.myform.sent.value); return false;"></a>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>FormalWriter: Free Online AI Paraphrase Engine</title>
+      <link rel="shortcut icon" href="/static/favicon.ico">
+      <!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script data-ad-client="ca-pub-7391803830463557" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+      <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Rammetto+One|Roboto|Muli|Lato" rel="stylesheet">
+      <link rel="shortcut icon" href="/static/favicon.ico">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script src="/static/scripts/nominalizer.js"></script>
+      <link rel="stylesheet" href="/static/scripts/nominalizer.css">
+      <style>
+         @media all and (max-width: 35em) {
+         .my-breakpoint .ui-block-a,
+         .my-breakpoint .ui-block-b,
+         .my-breakpoint .ui-block-c,
+         .my-breakpoint .ui-block-d,
+         .my-breakpoint .ui-block-e {
+         width: 100%;
+         float:none;
+         }
+         }
+         @media all and (min-width: 45em) {
+         .my-breakpoint.ui-grid-b .ui-block-a { width: 49.95%; }
+         .my-breakpoint.ui-grid-b .ui-block-b,
+         .my-breakpoint.ui-grid-b .ui-block-c { width: 24.925%; }
+         }
+         img{
+         max-width: 100%;
+         max-height: 100%;
+         display: block; /* remove extra space below image */
+         }
+         .userh {
+         border: 1px solid #ccc;
+         box-sizing: border-box;
+         color: rgb(55, 55, 55);
+         cursor: pointer;
+         display: inline-block;
+         font-family: Lato, sans-serif;
+         font-size: 12px;
+         font-weight: 300;
+         height: 172px;
+         padding-bottom: 0px;
+         padding-left: 15px;
+         padding-right: 15px;
+         padding-top: 12px;
+         text-decoration: none;
+         text-decoration-color: rgb(55, 55, 55);
+         text-decoration-line: none;
+         text-decoration-style: solid;
+         width: 180px;
+         margin-right:20px;
+         margin-top:10px;
+         }
+      </style>
+   </head>
+   <body style="background:#fff">
+      <div data-role="page" style="background:#fff">
+         <div class="row">
+            <div id="block-a" class="col-sm-5" style="border-radius: 25px;">
+               <div data-role="header" style="background:#fff;top:20px;margin-left:10px;border:none">
+                  <p><a href="http://formalwriter.com/?u={{username}}" rel="external"><img src="../static/images/nomlogo.png"></a></p>
+               </div>
+               <a id="mylist" class="btn btn-default btn-xl" style="position:absolute;margin-left:50%;margin-top:-25px;display:none;z-index: 10;" data-role="none"> <span class="glyphicon glyphicon-th-list" onclick="getUser();"></span> My Texts</a>
+               <a id="settings" href="#setpop" class="btn btn-default btn-xl" style="position:absolute;margin-left:70%;margin-top:-25px;display:none;z-index: 10;" data-role="none" data-rel="popup" data-transition="pop"> <span class="glyphicon glyphicon-cog"></span> Settings</a>
+               <div role="main" class="ui-content">
+                  <div id="mainMenu">
+                     <ul class="nav nav-tabs" style="margin-top:30px;">
+                        <li class="active"><a href="#">Informal Word Substitution</a></li>
+                        <li id="nom-bar"><a href="/nominalize?u={{username}}" rel="external">Nominalization</a></li>
+                        <li id="acw-bar"><a href="/vocabulary?u={{username}}" rel="external">Paraphrase</a></li>
+                        <li id="gen-bar"><a href="/generate?u={{username}}" rel="external">Auto Text</a></li>
+                     </ul>
+                  </div>
+                  <form name="myform" id="myform" method="POST" data-ajax="false" accept-charset="UTF-8" >
+                     <div data-role="popup" id="setpop" data-transition="slideup" style="position:relative;padding:15px;">
+                        <div style="width:100%;padding:10px;background:#e6f6ff;text-align:center;border-radius:10px"><b>Level of Edit</b></div>
+                        <br>
+                        <div style="width:40%;display:inline;float:left;color:#5ea832"><b>Light</b></div>
+                        <div style="width:10%;display:inline;color:blue;text-align:center"><b>Medium</b></div>
+                        <div style="width:40%;display:inline;float:right;text-align:right;color:#a84a32"><b>Substantive</b></div>
+                        <div style="width:45%;display:inline;float:left"><i>Serious Words Only</i></div>
+                        <div style="width:45%;display:inline;float:right;text-align:right"><i>Edit Everything</i></div>
+                        <br>
+                        <br>
+                        <div data-role="rangeslider">
+                           <input type="range" name="range-6a" id="myrange" min="10" max="500" step="10" value="250">
+                        </div>
+                        <br><br>
+                        <div style="width:100%;padding:10px;background:#e6ffe7;text-align:center;border-radius:10px"><b>Stop List</b></div>
+                        <p>Separate your words with comma<br>e.g. <i>sports,cricket,football</i></p>
+                        <p><input id="wordlist"></input></p>
+                        <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>		
+                        <br>
+                        <center><button type="button" data-role="none"><a href="#" data-rel="back">Done</a></button></center>
+                     </div>
+                     <div id="form-wrapper" style="margin-top:50px;width:100%;">
+                        <center>
+                           <p id="headTitle" style="font-family: 'Muli:wght@900&display=swap', sans-serif;font-size:30px;width:90%;color:#2e2d2b">You <del style="color:red">can't</del> <u>cannot</u> catch informal words</p>
+                           <a href="/workspace?u={{username}}" rel="external"><button id="start1" type="button" class="btn btn-primary btn-lg" data-role="none" style="font-size:20px;font-weight:600;margin-top:50px;">Start Here</button></a>
+                           <p id="startNote" style="margin-top:25px;font-size:12px;">Login is not required</p>
+                           <div style="width:85%;float:left;display:inline">
+                              <textarea class="myarea" id="sent" name="sent" data-role="none" style="width:100%;border: none;box-shadow: none;font-size:18px;display:none"  placeholder="Type or paste (Ctrl+v) your text here" required></textarea>
+                           </div>
+                           <div style="width:15%;float:right;display:inline">
+                              <a id="clearBox" href="#" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" style="display:none"></a>
+                              <br>
+                              <br>
+                              <a id="academize" href="#" class="ui-btn ui-icon-arrow-r ui-btn-icon-notext ui-corner-all" style="display:none" onclick="acad(document.myform.sent.value); return false;"></a>
+                           </div>
+                  </form>
+                  <br>
+                  <br>
+                  <div>
+                  <p><span style="color:red;fornt-weight:900"><b>News</b></span> Our paper "Automatic Assistance for Academic Word Usage"<br>is accepted in <a href="https://coling2020.org/" target="_blank">COLING 2020</a><br>
+                  <p><img src="static/images/coling2020.png"></p>
+                  </p>
+                  </div>
+                  </center>
+                  </div>
+               </div>
             </div>
-            </form>
-            <br>
-            <br>
-			<div>
-			<p><span style="color:red;fornt-weight:900"><b>News</b></span> Our paper "Automatic Assistance for Academic Word Usage"<br>is accepted in <a href="https://coling2020.org/" target="_blank">COLING 2020</a><br>
-			<p><img src="static/images/coling2020.png"></p>
-			
-			</p>
-			</div>
-        </center>
-		</div>
-		
-		
-   </div>
-</div> <!---A -->
-  <div id="block-b" class="col-sm-5"  style="border-radius: 25px;background-color:#F1F1F0">
-  <div id="res-wrapper" style="width:90%;margin:0 auto;">
-	  <div id="loading" style="margin-top:180px;display:none;"><center><img src="static/images/gears.svg" ></center></div>
-	  <div id="toparea" style="position:relative;height:50px;top:20px;">
-	  <div id="successful" class="alert alert-success" style="display:none;"><b>Almost done</b> Edit the text and copy it to clipboard</div>  
-	  <div id="welldone" class="alert alert-success" style="display:none;"><b>Well done! Your text is formal</b></div>
-	  </div>
-	  	<div id="103" class="error" style="display:none;margin-top:50px;">
-					<div class="alert alert-danger"><b>SORRY! You text is too long</b></div>
-					<div>There are <b><span class="st2" ></span> words</b> in your text and that is too long for the system. Please make your text shorter and try again.<br><br>
-					<b>Please send 400 words.</b><br>
-					<br>You can contact me for long text processing.</div>
-				</div>
-			   
-			   	<div id="104" class="error" style="display:none;margin-top:50px;">
-					<div class="alert alert-danger"><b>System Error</b></div>
-					<div>System encountered a problem. Maybe there are errors in the text. Please revise your text and try again.</div>
-				</div>	
-	  <div id="result" style="position:relative;width:90%;color:#2e2d2b;">	
-				<br><br>
-				<p><b><h3>What is FormalWriter?</h3></b></p>
-				<p>FormalWriter is the new generation of intelligent automatic paraphrase systems. This system is a natural text generator and it is built on a <a href="https://en.wikipedia.org/wiki/Language_model#Neural_network" rel="external" target="_blank"> neural language model</a><br><br><i><span style="color:red">FormalWriter is not a grammar checker!</span> <a href="http://formalwriter.com/static/comparison_grammarly.html" rel="external">Why not Grammarly?</a></i><br></p><br>
-				<p><b>What is informal word substitution?</b><br>It is difficult for non-native  speakers of English or even some native speakers to find informal words in the text. FormalWriter automatically suggests semantically similar academic and formal words for the informal words in your writing.<br></p><br>
-				<p><b>Context-based Learning</b><br>FormalWriter Bot is sensitive to the context. Therefore, if you change a few words in your text, you will receive new suggestions based on the new context.</p><br>
-				<p><b>Best Practice</b><br>The application is developed to help in academic writing. So the users are expected to be students and teachers to check the formality of an <b>assignment, paper, abstract, proposal</b> and so on. Please try your own writing!</p><br>
-							
-				<p><a href="http://formalwriter.com/static/selected_paragrpahs.html" rel="external" style="text-decoration: none;">Real Examples from Native Writers!</a></p>
-				<br>
-				 
-				<div class="videoWrapper" style="width:100%"><iframe src="https://www.youtube.com/embed/A2VrLAQlsg4 " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div> 
-	
-	</div>
-	
-	<div id="editorCtl" class="ui-content" style="width:100%;margin:auto;">
-		<button id="cleanOutput" class="btn btn-primary" data-role="none" style="display:none">Select Words & Clean Text</button> <button id="cleanOutputVocab" class="btn btn-primary" data-role="none" style="display:none">Select Words & Clean Text</button> <button id="moredit" class="btn btn-info" data-role="none" style="display:none">Edit Text</button> <button id="cleanCopy" class="btn btn-info" data-role="none" style="display:none" onclick="CopyToClipboard('result')">Copy Revised Text</button> <button id="cleanCopyVocab" class="btn btn-info" data-role="none" style="display:none">Copy Revised Text</button> <span id='copied' style="font-size:10px;color: red;display:none">text copied to clipboard</span> <!--<button id="checkVocab" class="btn btn-warning" data-role="none" style="display:none">Check Vocabulary</button> -->
-		<p id="smallNote" class="ui-content" style="width:100%;margin:auto;display:none;font-family: 'Muli:wght@900&display=swap', sans-serif;font-size:11px;">Green words are <b>formal</b> or <b>academic</b> words.</p>   
-	</div>
-			        
-	
-	<div data-role="popup" id="acadpop" style="padding:15px;font-family: 'Muli', sans-serif;font-size:14px;max-width:400px;">
-<p><b>Informal Word Substitution</b></p>
-<p>This option finds the informal words in your writing and it will suggest formal and academic words. The words are ranked based on meaning and the context.<p>
-	
-	<br>
-<p><i><b>Example:</b></i><p>
-<p>Every time I wondered if we would ever get through this, she told me we would.</p>
-<br>
-<p>Every time I wondered if we would ever <span style="color:red"><del>get</del></span> <span style="color:red"><del>through</del></span> <span style="color:blue"><b>survive</b></span> this, she told me we would.</p>
-<br>
-
-</div>
- </div> <!--wrapper-->
-  </div> <!-- B -->
-  
-  <div id="block-c" class="col-sm-2" style="border-radius: 25px;background-image:url('/static/images/water1.png');">
-  
-       <div role="main" class="ui-content" style="width:95%;margin-left:5%">
-      <div data-role="container"><center><img src="../static/images/tryitfree.png" style="margin-top:20px"></center></a></div>
-		<div data-role="container" style="width:90%;margin:0 auto;"> 
-			<br>
-				<input id="myuser" value="{{username}}" type="hidden">
-				<input id="sent2" type="hidden">
-				<input id="cleaned" type="hidden">
-				<input id="proc" type="hidden">
-				
-			    <i><span id="user" style="font-size:12px"></span></i>
-			<div id="stats" style="width:98%;margin:0 auto;font-size:14px;margin-top:80px;display:none">
-				    
-					<p>
-					<span><b>Text Summary</b></span><br><br>
-					
-					<span>Text Length:</span> <span class="st2" ></span><br>
-					<span>Academic Words:</span> <span id="st6" ></span><br>
-					<span>Informal Words:</span> <span id="st7" ></span><br>
-					<span>Contractions:</span> <span id="st4" ></span><br>
-					<br>
-					<span>Formal/Academic Percentage:</span> <span id="st8" ></span>%<br>
-					<span>Informal Percentage:</span> <span id="st9" ></span>%<br>
-					<br>
-					<span>Total Changes:</span> <span id="st1" ></span>%<br>
-					</p>
-
-			</div>
-			<div id="bolckCBar">
-			<p class="inst" style="font-family: 'Muli', sans-serif;width:100%;color:#2e2d2b;margin-top:40px"><br><br><br>For <a href="#acadpop" data-rel="popup" data-transition="pop" style="text-decoration: underline;text-decoration-style:dashed;font-family: 'Muli', sans-serif;width:100%;font-weight:300">informal vocabulary substitution</a>, type/paste a short English text. (Maximum 400 words)<br><br></p> 
-			<div style="font-family: 'Muli', sans-serif;width:100%;color:#2e2d2b;margin-top:150px">If you found this application useful and you need to process a long text, or in case of questions, please send me an email <a href="mailto:tarjomeh@gmail.com" style="text-decoration: none;">tarjomeh@gmail.com</a> 
-			</div>
-			</div>
-		</div>
-			</div>
+            <!---A -->
+            <div id="block-b" class="col-sm-5"  style="border-radius: 25px;background-color:#F1F1F0">
+               <div id="res-wrapper" style="width:90%;margin:0 auto;">
+                  <div id="loading" style="margin-top:180px;display:none;">
+                     <center><img src="static/images/gears.svg" ></center>
+                  </div>
+                  <div id="toparea" style="position:relative;height:50px;top:20px;">
+                     <div id="successful" class="alert alert-success" style="display:none;"><b>Almost done</b> Edit the text and copy it to clipboard</div>
+                     <div id="welldone" class="alert alert-success" style="display:none;"><b>Well done! Your text is formal</b></div>
+                  </div>
+                  <div id="103" class="error" style="display:none;margin-top:50px;">
+                     <div class="alert alert-danger"><b>SORRY! You text is too long</b></div>
+                     <div>There are <b><span class="st2" ></span> words</b> in your text and that is too long for the system. Please make your text shorter and try again.<br><br>
+                        <b>Please send 400 words.</b><br>
+                        <br>You can contact me for long text processing.
+                     </div>
+                  </div>
+                  <div id="104" class="error" style="display:none;margin-top:50px;">
+                     <div class="alert alert-danger"><b>System Error</b></div>
+                     <div>System encountered a problem. Maybe there are errors in the text. Please revise your text and try again.</div>
+                  </div>
+                  <div id="result" style="position:relative;width:90%;color:#2e2d2b;">
+                     <br><br>
+                     <p>
+                        <b>
+                     <h3>What is FormalWriter?</h3></b></p>
+                     <p>FormalWriter is the new generation of intelligent automatic paraphrase systems. This system is a natural text generator and it is built on a <a href="https://en.wikipedia.org/wiki/Language_model#Neural_network" rel="external" target="_blank"> neural language model</a><br><br><i><span style="color:red">FormalWriter is not a grammar checker!</span> <a href="http://formalwriter.com/static/comparison_grammarly.html" rel="external">Why not Grammarly?</a></i><br></p>
+                     <br>
+                     <p><b>What is informal word substitution?</b><br>It is difficult for non-native  speakers of English or even some native speakers to find informal words in the text. FormalWriter automatically suggests semantically similar academic and formal words for the informal words in your writing.<br></p>
+                     <br>
+                     <p><b>Context-based Learning</b><br>FormalWriter Bot is sensitive to the context. Therefore, if you change a few words in your text, you will receive new suggestions based on the new context.</p>
+                     <br>
+                     <p><b>Best Practice</b><br>The application is developed to help in academic writing. So the users are expected to be students and teachers to check the formality of an <b>assignment, paper, abstract, proposal</b> and so on. Please try your own writing!</p>
+                     <br>
+                     <p><a href="http://formalwriter.com/static/selected_paragrpahs.html" rel="external" style="text-decoration: none;">Real Examples from Native Writers!</a></p>
+                     <br>
+                     <div class="videoWrapper" style="width:100%"><iframe src="https://www.youtube.com/embed/A2VrLAQlsg4 " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                  </div>
+                  <div id="editorCtl" class="ui-content" style="width:100%;margin:auto;">
+                     <button id="cleanOutput" class="btn btn-primary" data-role="none" style="display:none">Select Words & Clean Text</button> <button id="cleanOutputVocab" class="btn btn-primary" data-role="none" style="display:none">Select Words & Clean Text</button> <button id="moredit" class="btn btn-info" data-role="none" style="display:none">Edit Text</button> <button id="cleanCopy" class="btn btn-info" data-role="none" style="display:none" onclick="CopyToClipboard('result')">Copy Revised Text</button> <button id="cleanCopyVocab" class="btn btn-info" data-role="none" style="display:none">Copy Revised Text</button> <span id='copied' style="font-size:10px;color: red;display:none">text copied to clipboard</span> <!--<button id="checkVocab" class="btn btn-warning" data-role="none" style="display:none">Check Vocabulary</button> -->
+                     <p id="smallNote" class="ui-content" style="width:100%;margin:auto;display:none;font-family: 'Muli:wght@900&display=swap', sans-serif;font-size:11px;">Green words are <b>formal</b> or <b>academic</b> words.</p>
+                  </div>
+                  <div data-role="popup" id="acadpop" style="padding:15px;font-family: 'Muli', sans-serif;font-size:14px;max-width:400px;">
+                     <p><b>Informal Word Substitution</b></p>
+                     <p>This option finds the informal words in your writing and it will suggest formal and academic words. The words are ranked based on meaning and the context.
+                     <p>
+                        <br>
+                     <p><i><b>Example:</b></i>
+                     <p>
+                     <p>Every time I wondered if we would ever get through this, she told me we would.</p>
+                     <br>
+                     <p>Every time I wondered if we would ever <span style="color:red"><del>get</del></span> <span style="color:red"><del>through</del></span> <span style="color:blue"><b>survive</b></span> this, she told me we would.</p>
+                     <br>
+                  </div>
+               </div>
+               <!--wrapper-->
+            </div>
+            <!-- B -->
+            <div id="block-c" class="col-sm-2" style="border-radius: 25px;background-image:url('/static/images/water1.png');">
+               <div role="main" class="ui-content" style="width:95%;margin-left:5%">
+                  <div data-role="container">
+                     <center><img src="../static/images/tryitfree.png" style="margin-top:20px"></center>
+                     </a>
+                  </div>
+                  <div data-role="container" style="width:90%;margin:0 auto;">
+                     <br>
+                     <input id="myuser" value="{{username}}" type="hidden">
+                     <input id="sent2" type="hidden">
+                     <input id="cleaned" type="hidden">
+                     <input id="proc" type="hidden">
+                     <i><span id="user" style="font-size:12px"></span></i>
+                     <div id="stats" style="width:98%;margin:0 auto;font-size:14px;margin-top:80px;display:none">
+                        <p>
+                           <span><b>Text Summary</b></span><br><br>
+                           <span>Text Length:</span> <span class="st2" ></span><br>
+                           <span>Academic Words:</span> <span id="st6" ></span><br>
+                           <span>Informal Words:</span> <span id="st7" ></span><br>
+                           <span>Contractions:</span> <span id="st4" ></span><br>
+                           <br>
+                           <span>Formal/Academic Percentage:</span> <span id="st8" ></span>%<br>
+                           <span>Informal Percentage:</span> <span id="st9" ></span>%<br>
+                           <br>
+                           <span>Total Changes:</span> <span id="st1" ></span>%<br>
+                        </p>
+                     </div>
+                     <div id="bolckCBar">
+                        <p class="inst" style="font-family: 'Muli', sans-serif;width:100%;color:#2e2d2b;margin-top:40px"><br><br><br>For <a href="#acadpop" data-rel="popup" data-transition="pop" style="text-decoration: underline;text-decoration-style:dashed;font-family: 'Muli', sans-serif;width:100%;font-weight:300">informal vocabulary substitution</a>, type/paste a short English text. (Maximum 400 words)<br><br></p>
+                        <div style="font-family: 'Muli', sans-serif;width:100%;color:#2e2d2b;margin-top:150px">If you found this application useful and you need to process a long text, or in case of questions, please send me an email <a href="mailto:tarjomeh@gmail.com" style="text-decoration: none;">tarjomeh@gmail.com</a> 
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- C -->
+         <div data-role="footer" style="margin:0 auto;padding:15px;background:#FFFFFF;font-size:13px;font-weight:500;color:#97a0bf;text-align:center;">
+            <p style="width:80%;margin:0 auto">(c) FormalWriter (<a style="text-decoration:none;color:#97a0bf;font-size:13px;font-weight:500;" href="https://saberi.ir" target="_blank">Dariush Saberi</a>).<br>The application is developed with a grant from City University of Hong Kong.<br>Privacy: Your text is safe with us. We do not publish or transfer your text to any third party <br>for any reason, unless compelled to do so by a court of law.</p>
+         </div>
       </div>
-  
-
- 
-  
-  </div><!-- C -->
-
-
-<div data-role="footer" style="margin:0 auto;padding:15px;background:#FFFFFF;font-size:13px;font-weight:500;color:#97a0bf;text-align:center;">
-		<p style="width:80%;margin:0 auto">(c) FormalWriter (<a style="text-decoration:none;color:#97a0bf;font-size:13px;font-weight:500;" href="https://saberi.ir" target="_blank">Dariush Saberi</a>).<br>The application is developed with a grant from City University of Hong Kong.<br>Privacy: Your text is safe with us. We do not publish or transfer your text to any third party <br>for any reason, unless compelled to do so by a court of law.</p>
-	</div>
-</div> 
-<div id="user-history" style="position:absolute;width:80%;margin-left:10%;margin-top:550px;z-index:100;height:400px;color:#2e2d2b;display:none">
-            <p id="histTitle" class="alert alert-success" style="display:none"><b>Your Texts</b></p>
-</div>
-            
-
-</div>
-</div>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVVTF8M0WS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GVVTF8M0WS');
-</script>
-</body>
+      <div id="user-history" style="position:absolute;width:80%;margin-left:10%;margin-top:550px;z-index:100;height:400px;color:#2e2d2b;display:none">
+         <p id="histTitle" class="alert alert-success" style="display:none"><b>Your Texts</b></p>
+      </div>
+      </div>
+      </div>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVVTF8M0WS"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         
+         gtag('config', 'G-GVVTF8M0WS');
+      </script>
+   </body>
 </html>
