@@ -16,4 +16,3 @@ Then run the server with:
 > cd ..<br> 
 > python3 app.py
 
-@Anton: I will prepare the Docker version and I will write a complete readme file later. 
