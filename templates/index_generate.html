@@ -1,168 +1,175 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>FormalWriter - AI Auto Text Generator</title>
-<link rel="shortcut icon" href="/static/favicon.ico">
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<link href="https://fonts.googleapis.com/css?family=Rammetto+One|Roboto|Muli|Lato" rel="stylesheet"> 
-<link rel="shortcut icon" href="/static/favicon.ico">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="/static/scripts/nominalizer.js"></script>
-<link rel="stylesheet" href="/static/scripts/nominalizer.css">
-  <style>
-    @media all and (max-width: 35em) {
-    .my-breakpoint .ui-block-a,
-    .my-breakpoint .ui-block-b,
-    .my-breakpoint .ui-block-c,
-    .my-breakpoint .ui-block-d,
-    .my-breakpoint .ui-block-e {
-      width: 100%;
-      float:none;
-    }
-  }
- 
-  @media all and (min-width: 45em) {
-    .my-breakpoint.ui-grid-b .ui-block-a { width: 40%; }
-    .my-breakpoint.ui-grid-b .ui-block-b { width: 40%; }
-    .my-breakpoint.ui-grid-b .ui-block-c { width: 20%; }
-  }
-  </style>
-</head>
-<body>
-  <div role="main" class="ui-content" style="background-color:#fff;height:100%;">
-    <div class="ui-grid-b my-breakpoint">
-      <div class="ui-block-a" style="border-radius: 25px;min-height:850px;"><div class="ui-body ui-body-d">
-      <div data-role="container" style="top:0px;margin-left:10px;"><p><a href="http://formalwriter.com/?u={{username}}" rel="external"><img src="../static/images/nomlogo.png"></a></p></div>
-      
-      <ul class="nav nav-tabs" style="margin-top:30px;">
-    <li><a href="/?u={{username}}" rel="external">Informal Word Substitution</a></li>
-    <li><a href="/nominalize?u={{username}}" rel="external">Nominalization</a></li>
-   <li id="acw-bar"><a href="/vocabulary?u={{username}}" rel="external">Paraphrase</a></li>
-    <li class="active"><a href="#">Auto Text</a></li>
-	</ul>
-		<div role="main" class="ui-content" style="margin-top:50px;">
-		<center>
-			<p id="headTitle" style="font-family: 'Muli:wght@900&display=swap', sans-serif;font-size:30px;width:90%;color:#2e2d2b">Generate a New Text!</p>
-			<p><span style="padding:5px;color:red">Maximum 300 words in this feature</span></p>
-            <div style="width:15%;float:right;">
-
-            <button type="button" id="autogen" href="#" class="btn btn-default btn-sm" data-role="none">Auto <span class="glyphicon glyphicon-chevron-right"></span></button><br><br>
-            <button type="button" id="custombt" href="#" class="btn btn-default btn-sm" data-role="none">Custom <span class="glyphicon glyphicon-chevron-right"></span></button>
-            <br><br>
-            <a id="clearBox" href="#" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" style="display:none"></a>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>FormalWriter - AI Auto Text Generator</title>
+      <link rel="shortcut icon" href="/static/favicon.ico">
+      <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+      <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+      <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Rammetto+One|Roboto|Muli|Lato" rel="stylesheet">
+      <link rel="shortcut icon" href="/static/favicon.ico">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script src="/static/scripts/nominalizer.js"></script>
+      <link rel="stylesheet" href="/static/scripts/nominalizer.css">
+      <style>
+         @media all and (max-width: 35em) {
+         .my-breakpoint .ui-block-a,
+         .my-breakpoint .ui-block-b,
+         .my-breakpoint .ui-block-c,
+         .my-breakpoint .ui-block-d,
+         .my-breakpoint .ui-block-e {
+         width: 100%;
+         float:none;
+         }
+         }
+         @media all and (min-width: 45em) {
+         .my-breakpoint.ui-grid-b .ui-block-a { width: 40%; }
+         .my-breakpoint.ui-grid-b .ui-block-b { width: 40%; }
+         .my-breakpoint.ui-grid-b .ui-block-c { width: 20%; }
+         }
+      </style>
+   </head>
+   <body>
+      <div role="main" class="ui-content" style="background-color:#fff;height:100%;">
+      <div class="ui-grid-b my-breakpoint">
+         <div class="ui-block-a" style="border-radius: 25px;min-height:850px;">
+            <div class="ui-body ui-body-d">
+               <div data-role="container" style="top:0px;margin-left:10px;">
+                  <p><a href="http://formalwriter.com/?u={{username}}" rel="external"><img src="../static/images/nomlogo.png"></a></p>
+               </div>
+               <ul class="nav nav-tabs" style="margin-top:30px;">
+                  <li><a href="/?u={{username}}" rel="external">Informal Word Substitution</a></li>
+                  <li><a href="/nominalize?u={{username}}" rel="external">Nominalization</a></li>
+                  <li id="acw-bar"><a href="/vocabulary?u={{username}}" rel="external">Paraphrase</a></li>
+                  <li class="active"><a href="#">Auto Text</a></li>
+               </ul>
+               <div role="main" class="ui-content" style="margin-top:50px;">
+                  <center>
+                     <p id="headTitle" style="font-family: 'Muli:wght@900&display=swap', sans-serif;font-size:30px;width:90%;color:#2e2d2b">Generate a New Text!</p>
+                     <p><span style="padding:5px;color:red">Maximum 300 words in this feature</span></p>
+                     <div style="width:15%;float:right;">
+                        <button type="button" id="autogen" href="#" class="btn btn-default btn-sm" data-role="none">Auto <span class="glyphicon glyphicon-chevron-right"></span></button><br><br>
+                        <button type="button" id="custombt" href="#" class="btn btn-default btn-sm" data-role="none">Custom <span class="glyphicon glyphicon-chevron-right"></span></button>
+                        <br><br>
+                        <a id="clearBox" href="#" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" style="display:none"></a>
+                     </div>
+                     <form name="myform" id="myform" method="POST" data-ajax="false" accept-charset="UTF-8" style="width:80%">
+                        <textarea class="myarea" id="sent" name="sent" data-role="none" style="width:90%;border: none;box-shadow: none;font-size:18px"  placeholder="Type or paste (Ctrl+v) your text here to see" required></textarea>  
+                     </form>
+                  </center>
+               </div>
             </div>
-            
-            <form name="myform" id="myform" method="POST" data-ajax="false" accept-charset="UTF-8" style="width:80%">
-            
-            <textarea class="myarea" id="sent" name="sent" data-role="none" style="width:90%;border: none;box-shadow: none;font-size:18px"  placeholder="Type or paste (Ctrl+v) your text here to see" required></textarea>  
-            </form>
-        </center>
-        </div>
-      
-      </div></div> <!-- A -->
-      <div class="ui-block-b" style="border-radius: 25px;background-color:#F1F1F0;min-height:850px;"><div class="ui-body ui-body-d">
-      <div role="main" class="ui-content">
-		<div id="success" class="alert alert-success" style="margin-top:10px;display:none;"><strong>Success!</strong> It is done</div> 
-		<div id="autoMode" class="alert alert-info" style="margin-top:10px;display:none;"><strong>Auto Mode!</strong><br>It can take several minutes.<br>Please be patient</div> 
-		<div id="cutomMode" class="alert alert-info" style="margin-top:10px;display:none;"><strong>Custom Mode!</strong><br>Select words and proceed.<br>Please be patient</div>
-		<div id="loading" style="margin-top:180px;display:none;"><center><img src="static/images/gears.svg" ></center></div>
-			<div id="welldone" class="alert alert-danger" style="display:none;margin-top:10px;display:none"><b>We detected some informal words. Select words and click "Proceed".</b></div>
-			   
-			   	<div id="103" class="error" style="display:none;margin-top:230px;">
-					<div class="alert alert-danger"><b>SORRY! You text is too long</b></div>
-					<div>There are <b><span class="st2" ></span> words</b> in your text and that is too long for the system. Please make your text shorter and try again.<br><br>
-					<span style="color:red;text-weight:800">Please send 100 words.</span><br>
-					<br>You can contact me for long text processing.</div>
-				</div>
-			   
-			   	<div id="104" class="error" style="display:none;margin-top:230px;">
-					<div class="alert alert-danger"><b>System Error</b></div>
-					<div>System encountered a problem. Maybe there are errors in the text. Please revise your text and try again.</div>
-				</div>			   
-			   
-			<div id="result" style="width:90%;color:#2e2d2b;min-height:250px;margin-top:40px;">
-				<div id ="announce">
-					<br><br>
-				<p><b><h3>Automatic Paraphrase</h3></b></p>
-				<br><br>
-				<p><b>How does FormalWriter paraphrase automatically?</b></p><p>FormalWriter uses AI to help you revise the academic words in your writing based on the context.</p>
-				<br>
-				<p><b>What is this feature?</b><br>This feature takes a longer time. Please be patient. It first formalizes your text and then generates words to be replaced for the whole text. Two options are available:<br>
-				<ul>
-				<li><b>Custom (Higher Quality)</b></li><span>You can select the words in each step and customize the new text.</span>
-				<li><b>Auto (Lower Quality)</b></li><span>With this option a new text is generated automatically and the quality may be somewhat lower.</span>
-				</ul>
-				
-				</p>
-				<br>
-				<p class="alert alert-danger"><span class="glyphicon glyphicon-exclamation-sign"></span> <b>Plagiarism Warning! </b><br>This feature generates a new text from your input. Please respect the copyright laws in your country or region. We do not accept any responsibility for your usage of this website and application.</p>
-				</div>
-			</div>
-			<div class="ui-content" style="width:100%;margin:auto;marign-top:20px;"><button id="proceedC" class="btn btn-primary" data-role="none" style="display:none">Proceed</button></div>
-			<div class="ui-content" style="width:100%;margin:auto;"><button id="cleanOutput" class="btn btn-primary" data-role="none" style="display:none">Select Words & Clean Text</button> <button id="cleanCopy" class="btn btn-info" data-role="none" style="display:none" onclick="CopyToClipboard('result')">Copy Generated Text</button> <span id='copied' style="font-size:10px;color: red;display:none">text copied to clipboard</span></div>
-			<div id="smallNote" class="ui-content" style="width:100%;margin:auto;display:none;font-family: 'Muli:wght@900&display=swap', sans-serif;font-size:11px;">Green words are <b>formal</b> or <b>academic</b> words.</div>
-            <div id="result1" style="width:90%;color:#2e2d2b;"></div>
-            
-        </div>
-	
-	<div data-role="popup" id="acadpop" style="padding:15px;font-family: 'Muli', sans-serif;font-size:14px;max-width:400px;">
-<p><b>Informal Word Substitution</b></p>
-<p>This option finds the informal words in your writing and it will suggest formal and academic words. The words are ranked based on meaning and the context.<p>
-	<br>
-<p><i><b>Example:</b></i><p>
-<p>Every time I wondered if we would ever get through this , she told me we would .</p>
-<br>
-<p>Every time I wondered if we would ever <span style="color:red"><del>get</del></span> <span style="color:red"><del>through</del></span> <span style="color:blue"><b>survive</b></span> this , she told me we would .</p>
-<br>
-
-</div>
-      
-      
-      </div></div><!-- B -->
-      <div class="ui-block-c" style="border-radius: 25px;background-image:url('/static/images/water1.png');min-height:850px;"><div class="ui-body ui-body-d">
-      <div role="main" class="ui-content" style="width:80%;margin-left:20%">
-      <div data-role="container"><center><img src="../static/images/tryitfree.png" style="margin-top:20px"></center></a></div>
-		<div data-role="container" style="width:90%;margin:0 auto;"> 
-			<div id="stats" style="width:98%;margin:0 auto;font-size:14px;margin-top:80px;display:none">
-					<p>
-					<span><b>Text Summary</b></span><br><br>
-					<span>Text Length:</span> <span class="st2" ></span><br>
-					<span>Academic Words:</span> <span id="st6" ></span><br>
-					<span>Informal Words:</span> <span id="st7" ></span><br>
-					<span>Contractions:</span> <span id="st4" ></span><br>
-					<br>
-					<span>Formal/Academic Percentage:</span> <span id="st8" ></span>%<br>
-					<span>Informal Percentage:</span> <span id="st9" ></span>%<br>
-					<br>
-					<span>Total Changes:</span> <span id="st1" ></span>%<br>
-					</p>
-
-			</div>
-			<div>
-			<p class="inst" style="font-family: 'Muli', sans-serif;width:100%;color:#2e2d2b;margin-top:40px"><br><br><br>For <u>Automatic Online Paraphrase</u>, type/paste a short English text. (Maximum 300 words)<br><br></p> 
-			<div style="font-family: 'Muli', sans-serif;width:100%;color:#2e2d2b;margin-top:150px">If you found this application useful and you need to process a long text, or in case of questions, please send me an email <a href="mailto:tarjomeh@gmail.com" style="text-decoration: none;">tarjomeh@gmail.com</a> </div>
-		</div>
-			</div>
+         </div>
+         <!-- A -->
+         <div class="ui-block-b" style="border-radius: 25px;background-color:#F1F1F0;min-height:850px;">
+            <div class="ui-body ui-body-d">
+               <div role="main" class="ui-content">
+                  <div id="success" class="alert alert-success" style="margin-top:10px;display:none;"><strong>Success!</strong> It is done</div>
+                  <div id="autoMode" class="alert alert-info" style="margin-top:10px;display:none;"><strong>Auto Mode!</strong><br>It can take several minutes.<br>Please be patient</div>
+                  <div id="cutomMode" class="alert alert-info" style="margin-top:10px;display:none;"><strong>Custom Mode!</strong><br>Select words and proceed.<br>Please be patient</div>
+                  <div id="loading" style="margin-top:180px;display:none;">
+                     <center><img src="static/images/gears.svg" ></center>
+                  </div>
+                  <div id="welldone" class="alert alert-danger" style="display:none;margin-top:10px;display:none"><b>We detected some informal words. Select words and click "Proceed".</b></div>
+                  <div id="103" class="error" style="display:none;margin-top:230px;">
+                     <div class="alert alert-danger"><b>SORRY! You text is too long</b></div>
+                     <div>There are <b><span class="st2" ></span> words</b> in your text and that is too long for the system. Please make your text shorter and try again.<br><br>
+                        <span style="color:red;text-weight:800">Please send 100 words.</span><br>
+                        <br>You can contact me for long text processing.
+                     </div>
+                  </div>
+                  <div id="104" class="error" style="display:none;margin-top:230px;">
+                     <div class="alert alert-danger"><b>System Error</b></div>
+                     <div>System encountered a problem. Maybe there are errors in the text. Please revise your text and try again.</div>
+                  </div>
+                  <div id="result" style="width:90%;color:#2e2d2b;min-height:250px;margin-top:40px;">
+                     <div id ="announce">
+                        <br><br>
+                        <p>
+                           <b>
+                        <h3>Automatic Paraphrase</h3></b></p>
+                        <br><br>
+                        <p><b>How does FormalWriter paraphrase automatically?</b></p>
+                        <p>FormalWriter uses AI to help you revise the academic words in your writing based on the context.</p>
+                        <br>
+                        <p><b>What is this feature?</b><br>This feature takes a longer time. Please be patient. It first formalizes your text and then generates words to be replaced for the whole text. Two options are available:<br>
+                        <ul>
+                           <li><b>Custom (Higher Quality)</b></li>
+                           <span>You can select the words in each step and customize the new text.</span>
+                           <li><b>Auto (Lower Quality)</b></li>
+                           <span>With this option a new text is generated automatically and the quality may be somewhat lower.</span>
+                        </ul>
+                        </p>
+                        <br>
+                        <p class="alert alert-danger"><span class="glyphicon glyphicon-exclamation-sign"></span> <b>Plagiarism Warning! </b><br>This feature generates a new text from your input. Please respect the copyright laws in your country or region. We do not accept any responsibility for your usage of this website and application.</p>
+                     </div>
+                  </div>
+                  <div class="ui-content" style="width:100%;margin:auto;marign-top:20px;"><button id="proceedC" class="btn btn-primary" data-role="none" style="display:none">Proceed</button></div>
+                  <div class="ui-content" style="width:100%;margin:auto;"><button id="cleanOutput" class="btn btn-primary" data-role="none" style="display:none">Select Words & Clean Text</button> <button id="cleanCopy" class="btn btn-info" data-role="none" style="display:none" onclick="CopyToClipboard('result')">Copy Generated Text</button> <span id='copied' style="font-size:10px;color: red;display:none">text copied to clipboard</span></div>
+                  <div id="smallNote" class="ui-content" style="width:100%;margin:auto;display:none;font-family: 'Muli:wght@900&display=swap', sans-serif;font-size:11px;">Green words are <b>formal</b> or <b>academic</b> words.</div>
+                  <div id="result1" style="width:90%;color:#2e2d2b;"></div>
+               </div>
+               <div data-role="popup" id="acadpop" style="padding:15px;font-family: 'Muli', sans-serif;font-size:14px;max-width:400px;">
+                  <p><b>Informal Word Substitution</b></p>
+                  <p>This option finds the informal words in your writing and it will suggest formal and academic words. The words are ranked based on meaning and the context.
+                  <p>
+                     <br>
+                  <p><i><b>Example:</b></i>
+                  <p>
+                  <p>Every time I wondered if we would ever get through this , she told me we would .</p>
+                  <br>
+                  <p>Every time I wondered if we would ever <span style="color:red"><del>get</del></span> <span style="color:red"><del>through</del></span> <span style="color:blue"><b>survive</b></span> this , she told me we would .</p>
+                  <br>
+               </div>
+            </div>
+         </div>
+         <!-- B -->
+         <div class="ui-block-c" style="border-radius: 25px;background-image:url('/static/images/water1.png');min-height:850px;">
+            <div class="ui-body ui-body-d">
+               <div role="main" class="ui-content" style="width:80%;margin-left:20%">
+                  <div data-role="container">
+                     <center><img src="../static/images/tryitfree.png" style="margin-top:20px"></center>
+                     </a>
+                  </div>
+                  <div data-role="container" style="width:90%;margin:0 auto;">
+                     <div id="stats" style="width:98%;margin:0 auto;font-size:14px;margin-top:80px;display:none">
+                        <p>
+                           <span><b>Text Summary</b></span><br><br>
+                           <span>Text Length:</span> <span class="st2" ></span><br>
+                           <span>Academic Words:</span> <span id="st6" ></span><br>
+                           <span>Informal Words:</span> <span id="st7" ></span><br>
+                           <span>Contractions:</span> <span id="st4" ></span><br>
+                           <br>
+                           <span>Formal/Academic Percentage:</span> <span id="st8" ></span>%<br>
+                           <span>Informal Percentage:</span> <span id="st9" ></span>%<br>
+                           <br>
+                           <span>Total Changes:</span> <span id="st1" ></span>%<br>
+                        </p>
+                     </div>
+                     <div>
+                        <p class="inst" style="font-family: 'Muli', sans-serif;width:100%;color:#2e2d2b;margin-top:40px"><br><br><br>For <u>Automatic Online Paraphrase</u>, type/paste a short English text. (Maximum 300 words)<br><br></p>
+                        <div style="font-family: 'Muli', sans-serif;width:100%;color:#2e2d2b;margin-top:150px">If you found this application useful and you need to process a long text, or in case of questions, please send me an email <a href="mailto:tarjomeh@gmail.com" style="text-decoration: none;">tarjomeh@gmail.com</a> </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- C -->
       </div>
-      </div></div><!-- C -->
-    </div>
-   <div data-role="footer" data-position="fixed" style="margin:0 auto;padding:15px;background:#FFFFFF;font-size:13px;font-weight:500;color:#97a0bf;text-align:center;">
-		<p style="width:80%;margin:0 auto">(c) FormalWriter (<a style="text-decoration:none;color:#97a0bf;font-size:13px;font-weight:500;" href="https://saberi.ir" target="_blank">Dariush Saberi</a>).<br>The application is developed with a grant from City University of Hong Kong.<br>Privacy: Your text is safe with us. We do not publish or transfer your text to any third party <br>for any reason, unless compelled to do so by a court of law.</p>
-	</div>
-	
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVVTF8M0WS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GVVTF8M0WS');
-</script>
-</body>
+      <div data-role="footer" data-position="fixed" style="margin:0 auto;padding:15px;background:#FFFFFF;font-size:13px;font-weight:500;color:#97a0bf;text-align:center;">
+         <p style="width:80%;margin:0 auto">(c) FormalWriter (<a style="text-decoration:none;color:#97a0bf;font-size:13px;font-weight:500;" href="https://saberi.ir" target="_blank">Dariush Saberi</a>).<br>The application is developed with a grant from City University of Hong Kong.<br>Privacy: Your text is safe with us. We do not publish or transfer your text to any third party <br>for any reason, unless compelled to do so by a court of law.</p>
+      </div>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVVTF8M0WS"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         
+         gtag('config', 'G-GVVTF8M0WS');
+      </script>
+   </body>
 </html>
