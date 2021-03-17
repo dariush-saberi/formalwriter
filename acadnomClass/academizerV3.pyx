@@ -1,23 +1,24 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import traceback
-import subprocess
 import concurrent.futures
+import csv
 import re
+import subprocess
+import traceback
+
+import nltk
 import numpy as np
 import pandas as pd
-import csv
 import stanza
-import nltk
 
 nlp = stanza.Pipeline(lang="en", processors="tokenize,mwt,pos,lemma,depparse")
 import spacy
 
 snlp = spacy.load("en_core_web_sm")
-from lemminflect import getInflection
-import torch
 import acadnomClass.langmodel as langmodel
+import torch
+from lemminflect import getInflection
 from nltk.stem import WordNetLemmatizer
 
 lemmatizer = WordNetLemmatizer()
