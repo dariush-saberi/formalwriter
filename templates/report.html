@@ -1,175 +1,160 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-
 <html>
-<head>
-	
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title>FormalWriter - Formality Check on Real Writing Examples </title>
-	<meta name="generator" content="LibreOffice 6.1.5.2 (Linux)"/>
-	<meta name="created" content="00:00:00"/>
-	<meta name="changed" content="2020-04-28T10:32:36.118911231"/>
-	<link rel="shortcut icon" href="/static/favicon.ico">
-<link rel="shortcut icon" href="/static/favicon.ico">
-
-<link rel="shortcut icon" href="/static/favicon.ico">
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script data-ad-client="ca-pub-7391803830463557" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<link href="https://fonts.googleapis.com/css?family=Rammetto+One|Roboto|Muli|Lato" rel="stylesheet"> 
-<link rel="shortcut icon" href="/static/favicon.ico">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="/static/scripts/nominalizer.js"></script>
-<link rel="stylesheet" href="/static/scripts/nominalizer.css">
-<style>
-table {
-	width:80%;
-    border-collapse: separate;
-    border-spacing: 0 1em;
-}
-    @media all and (max-width: 35em) {
-    .my-breakpoint .ws-a,
-    .my-breakpoint .ws-b,
-    .my-breakpoint .ws-c,
-    .my-breakpoint .ws-d{
-      width: 100%;
-      float:none;
-    }
-  }
- 
-  @media all and (min-width: 45em) {
-    .my-breakpoint .ws-a { width: 15%; }
-    .my-breakpoint .ws-b { width: 35%; }
-    .my-breakpoint .ws-c { width: 35%; }
-    .my-breakpoint .ws-d { width: 15%; }
-  }
-
-      img{
-
-        max-width: 100%;
-
-        max-height: 100%;
-
-        display: block; /* remove extra space below image */
-
-    }
-#wstext:empty:before {
-  content:attr(data-placeholder);
-  color:gray
-}
-#wshead:empty:before {
-  content:attr(data-placeholder);
-  color:gray
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-.dropdown-menu {
-    columns: 2;
-	padding:10px;
-	font-size:18px;
-	
-}
-a, ul, li {
-	cursor:pointer;
-}
-#anomhead{
-	font-size: 16px;
-	padding: 10px;
-}
-#clearWS:hover {color:red;cursor:pointer;}
-#submitIcon:hover {color:blue;cursor:pointer;}
-#close,#open,#rightBarClose,#rightBarOpen{cursor:pointer;}
-
-</style>
-<script>
-$(document).ready(function(){  
-	
-	$( ".report" ).each(function( index ) {
-		$(this).html($( this ).text());
-	});
-	
-	var $items = $('.dropdown');
-var myArray = new Array();
-var myItems = new Array();
-$items.each(function(index,item){
-        var $mainwords = $(this).find('.dropdown-toggle');
-        $mainwords.each(function(){myArray.push($(this))});
-	var $mainitems = $(this).find('.dropdown-menu li a');
-	$mainitems.each(function(){
-		$(this).on("click",function(){ 
-			$('.dropdown-toggle').eq(index).html($(this).text()).css({'color':'blue'});
-		 });
-	});
-});
-	
-	
-	
-});
-</script>
-</head>
-
-<body>
-	
-	 <div role="main" class="ui-content" style="background-color:#fff;height:100%;margin-top:20px;">
-      <div data-role="container" style="top:0px;margin-left:10px;"><p><a href="http://formalwriter.com" rel="external"><img src="../static/images/nomlogo.png"></a></p></div>
-      
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+      <title>FormalWriter - Formality Check on Real Writing Examples </title>
+      <meta name="generator" content="LibreOffice 6.1.5.2 (Linux)"/>
+      <meta name="created" content="00:00:00"/>
+      <meta name="changed" content="2020-04-28T10:32:36.118911231"/>
+      <link rel="shortcut icon" href="/static/favicon.ico">
+      <link rel="shortcut icon" href="/static/favicon.ico">
+      <link rel="shortcut icon" href="/static/favicon.ico">
+      <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+      <script data-ad-client="ca-pub-7391803830463557" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+      <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Rammetto+One|Roboto|Muli|Lato" rel="stylesheet">
+      <link rel="shortcut icon" href="/static/favicon.ico">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script src="/static/scripts/nominalizer.js"></script>
+      <link rel="stylesheet" href="/static/scripts/nominalizer.css">
+      <style>
+         table {
+         width:80%;
+         border-collapse: separate;
+         border-spacing: 0 1em;
+         }
+         @media all and (max-width: 35em) {
+         .my-breakpoint .ws-a,
+         .my-breakpoint .ws-b,
+         .my-breakpoint .ws-c,
+         .my-breakpoint .ws-d{
+         width: 100%;
+         float:none;
+         }
+         }
+         @media all and (min-width: 45em) {
+         .my-breakpoint .ws-a { width: 15%; }
+         .my-breakpoint .ws-b { width: 35%; }
+         .my-breakpoint .ws-c { width: 35%; }
+         .my-breakpoint .ws-d { width: 15%; }
+         }
+         img{
+         max-width: 100%;
+         max-height: 100%;
+         display: block; /* remove extra space below image */
+         }
+         #wstext:empty:before {
+         content:attr(data-placeholder);
+         color:gray
+         }
+         #wshead:empty:before {
+         content:attr(data-placeholder);
+         color:gray
+         }
+         .dropdown:hover .dropdown-menu {
+         display: block;
+         }
+         .dropdown-menu {
+         columns: 2;
+         padding:10px;
+         font-size:18px;
+         }
+         a, ul, li {
+         cursor:pointer;
+         }
+         #anomhead{
+         font-size: 16px;
+         padding: 10px;
+         }
+         #clearWS:hover {color:red;cursor:pointer;}
+         #submitIcon:hover {color:blue;cursor:pointer;}
+         #close,#open,#rightBarClose,#rightBarOpen{cursor:pointer;}
+      </style>
+      <script>
+         $(document).ready(function(){  
+         	
+         	$( ".report" ).each(function( index ) {
+         		$(this).html($( this ).text());
+         	});
+         	
+         	var $items = $('.dropdown');
+         var myArray = new Array();
+         var myItems = new Array();
+         $items.each(function(index,item){
+                 var $mainwords = $(this).find('.dropdown-toggle');
+                 $mainwords.each(function(){myArray.push($(this))});
+         	var $mainitems = $(this).find('.dropdown-menu li a');
+         	$mainitems.each(function(){
+         		$(this).on("click",function(){ 
+         			$('.dropdown-toggle').eq(index).html($(this).text()).css({'color':'blue'});
+         		 });
+         	});
+         });
+         	
+         	
+         	
+         });
+      </script>
+   </head>
+   <body>
+      <div role="main" class="ui-content" style="background-color:#fff;height:100%;margin-top:20px;">
+      <div data-role="container" style="top:0px;margin-left:10px;">
+         <p><a href="http://formalwriter.com" rel="external"><img src="../static/images/nomlogo.png"></a></p>
+      </div>
       <ul class="nav nav-tabs" style="margin-top:30px;">
-    <li><a href="/" rel="external"><b>Informal Word Substitution</b></a></li>
-    <li><a href="/nominalize" rel="external"><b>Nominalization</b></a></li>
-    <!-- <li><a href="/generate" rel="external">Text Generation</a></li> -->
-	</ul>
-		<div role="main" class="ui-content" style="margin-top:50px;">
-		<center>
-			<p id="headTitle" style="font-family: 'Muli:wght@900&display=swap', sans-serif;font-size:30px;width:90%;color:#2e2d2b">Report: {{res|length}} records</p>
-        </center>
-        </div>
-      
-        <div role="main" class="ui-content">
-		  
-	<center>
-		<div class="table-responsive">
-<table class="table" style="width:90%">
-	<colgroup width="20"></colgroup>
-	<colgroup width="40"></colgroup>
-	<colgroup width="20"></colgroup>
-	<colgroup width="706"></colgroup>
-	<colgroup width="579"></colgroup>
-	<th style="text-align:center">Date</th>
-	<th style="text-align:center">Source</th>
-	<th style="text-align:center">#</th>
-	<th style="text-align:center">Original Paragraph</th>
-	<th style="text-align:center">Informal Words Marked</th>
-	{%for x in res[-50:]%}
-		<tr>
-		<td>{{x[0]}}</td>
-		<td>{{x[1]}}</td>
-		<td>{{x[2]}}<br>{{x[4]}}<br>{{x[5]}}</td>
-		<td>{{x[3]}}</td>
-		<td class="report">{{x[6]}}</td>
-		</tr>
-	{%endfor%}
-</table>
-<br>
-<br>
-<br>
-<br>
-<br>
-</div>
-</center>
-    <div data-role="footer" data-position="fixed" style="margin:0 auto;padding:15px;background:#FFFFFF;font-size:13px;font-weight:500;color:#97a0bf;text-align:center;">
-		<p style="width:80%;margin:0 auto">(c) FormalWriter (<a style="text-decoration:none;color:#97a0bf;font-size:13px;font-weight:500;" href="https://saberi.ir" target="_blank">Dariush Saberi</a>).<br>The application is developed with a grant from City University of Hong Kong.<br>Privacy: Your text is safe with us. We do not publish or transfer your text to any third party <br>for any reason, unless compelled to do so by a court of law.</p>
-	</div>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVVTF8M0WS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GVVTF8M0WS');
-</script>
-</body>
+         <li><a href="/" rel="external"><b>Informal Word Substitution</b></a></li>
+         <li><a href="/nominalize" rel="external"><b>Nominalization</b></a></li>
+         <!-- <li><a href="/generate" rel="external">Text Generation</a></li> -->
+      </ul>
+      <div role="main" class="ui-content" style="margin-top:50px;">
+         <center>
+            <p id="headTitle" style="font-family: 'Muli:wght@900&display=swap', sans-serif;font-size:30px;width:90%;color:#2e2d2b">Report: {{res|length}} records</p>
+         </center>
+      </div>
+      <div role="main" class="ui-content">
+      <center>
+         <div class="table-responsive">
+            <table class="table" style="width:90%">
+               <colgroup width="20"></colgroup>
+               <colgroup width="40"></colgroup>
+               <colgroup width="20"></colgroup>
+               <colgroup width="706"></colgroup>
+               <colgroup width="579"></colgroup>
+               <th style="text-align:center">Date</th>
+               <th style="text-align:center">Source</th>
+               <th style="text-align:center">#</th>
+               <th style="text-align:center">Original Paragraph</th>
+               <th style="text-align:center">Informal Words Marked</th>
+               {%for x in res[-50:]%}
+               <tr>
+                  <td>{{x[0]}}</td>
+                  <td>{{x[1]}}</td>
+                  <td>{{x[2]}}<br>{{x[4]}}<br>{{x[5]}}</td>
+                  <td>{{x[3]}}</td>
+                  <td class="report">{{x[6]}}</td>
+               </tr>
+               {%endfor%}
+            </table>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+         </div>
+      </center>
+      <div data-role="footer" data-position="fixed" style="margin:0 auto;padding:15px;background:#FFFFFF;font-size:13px;font-weight:500;color:#97a0bf;text-align:center;">
+         <p style="width:80%;margin:0 auto">(c) FormalWriter (<a style="text-decoration:none;color:#97a0bf;font-size:13px;font-weight:500;" href="https://saberi.ir" target="_blank">Dariush Saberi</a>).<br>The application is developed with a grant from City University of Hong Kong.<br>Privacy: Your text is safe with us. We do not publish or transfer your text to any third party <br>for any reason, unless compelled to do so by a court of law.</p>
+      </div>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVVTF8M0WS"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         
+         gtag('config', 'G-GVVTF8M0WS');
+      </script>
+   </body>
 </html>
